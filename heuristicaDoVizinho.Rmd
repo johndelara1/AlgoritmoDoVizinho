@@ -26,7 +26,7 @@ O cálculo do retorno de cada mês é realizado como: Soma(RetornoAção_X * Por
 
 ```{r tabelaBase, echo=FALSE}
 library(kableExtra)
-
+library(dplyr)
 nomeDasColunas <- c("A","B","C","D","E", "Retorno Carteira")
 RetornoAnual <-  c(0.42292, 0.25685, 0.04128,  0.05812, 0.01731, 0.20979)
 carteiraEscolhida <- c( 0.3, 0.25, 0.20, 0.15, 0.10, 1)
@@ -54,10 +54,37 @@ apresentação: aula da primeira semana de novembro.
 ##### Por exemplo:
 ***Se a solução atual é aplicar nas ações A,B,C,D, E, com porcentagens de 30%, 25%, 20%, 15% e 10% as soluções vizinhas são:***
 
-**2. Observação**: toda ação não podee ter um investimento acima de 100% ou abaixo de 0%, e a soma das 5 ações
+**2. Observação**: toda ação não pode ter um investimento acima de 100% ou abaixo de 0%, e a soma das 5 ações
 deve ser 100%.
 
 ```{r pressure, echo=FALSE}
+qualRetornoDaCarteira <- function(t){
+  i = 1
+  for (i in i:length(t)-1) {
+    if(i == 1){
+      multiplica <- t[1 ,i]*t[2 ,i]
+    }else{
+      multiplica1 <- t[1 ,i]*t[2 ,i]
+      multiplica <- rbind(multiplica, multiplica1)
+    } 
+  }
+  return(sum(multiplica))
+}
+totalCarteiraEscolhida <- function(t){
+  i = 1
+  for (i in i:length(t)-1) {
+    if(i == 1){
+      soma <- t[2 ,i]
+    }else{
+      soma1 <- t[2 ,i]
+      soma <- rbind(soma, soma1)
+    } 
+  }
+  return(sum(soma))
+}
+
+tabela$`Retorno Carteira`[1] <- qualRetornoDaCarteira(tabela)
+tabela$`Retorno Carteira`[2] <- totalCarteiraEscolhida(tabela)
 
 ```
 

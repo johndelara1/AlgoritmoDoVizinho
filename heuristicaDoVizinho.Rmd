@@ -1,0 +1,64 @@
+---
+title: "Heuristica do Vizinho"
+author: "JOHN DE LARA"
+date: "10 de outubro de 2019"
+output: rmdformats::readthedown
+#output: rmarkdown::html_vignette
+#vignette: >
+#  %\VignetteIndexEntry{Vignette Title}
+#  %\VignetteEngine{knitr::rmarkdown}
+#  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+# https://www.r-bloggers.com/r-markdown-template-for-business-reports/
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Trabalho Inteligência Artificial
+Heurística do Vizinho aplicado a Carteira de Investimentos
+
+Um clube de investimentos está avaliando a sua carteira de ações. O clube escolheu 10 possíveis ações para investir. 
+A política do clube é investir em 5 das 10 ações, sendo o investimento nessas 5 ações de 30%, 25%, 20%, 15% e 10%. 
+Para escolher as 5 ações e a porcentagem de aplicação em cada ação, o clube utiliza a soma dos retornos mensagens dos últimos 12 meses.
+O cálculo do retorno de cada mês é realizado como: Soma(RetornoAção_X * PorcentagemAção_X), onde X são as 10 possíveis ações escolhidas para investir. No quadro a seguir observa-se os cálculos, sendo a carteira escolhida: 30% na ação A; 25% na ação B; 20% na ação C; 15% na ação D e 10% na ação E.
+
+
+```{r tabelaBase, echo=FALSE}
+library(kableExtra)
+
+nomeDasColunas <- c("A","B","C","D","E", "Retorno Carteira")
+RetornoAnual <-  c(0.42292, 0.25685, 0.04128,  0.05812, 0.01731, 0.20979)
+carteiraEscolhida <- c( 0.3, 0.25, 0.20, 0.15, 0.10, 1)
+tabela <- as.data.frame(rbind(RetornoAnual, carteiraEscolhida))
+colnames(tabela) <- nomeDasColunas
+kable(tabela, caption = "Tabela  Retorno De Investimento")
+```
+
+## Exercício
+Utilize a heurística do vizinho para encontrar uma carteira de aplicação com o maior retorno anual.
+
+**Realizar 5 simulações diferentes da solução inicial, sorteando 30% entre as ações A,B,C,D, E, depois 25% entre
+as ações restantes e assim sucesivamente.** 
+
+OBS: Dada a solução inicial, aplica a heurística do vizinho.
+
+- Apresentar o relatório com as 5 soluções inicias, e a melhor solução encontrada em cada simulação.
+
+- Deverá ser apresentado em sala de aula o sistema rodando e o código fonte do sistema. A data limite da
+apresentação: aula da primeira semana de novembro.
+
+**1. Observação**: Considerar o vizinho de uma solução, o aumento na porcentagem de aplicação de uma ação em
+5%. Desta forma, cada solução tem 25 vizinhos. 
+
+##### Por exemplo:
+***Se a solução atual é aplicar nas ações A,B,C,D, E, com porcentagens de 30%, 25%, 20%, 15% e 10% as soluções vizinhas são:***
+
+**2. Observação**: toda ação não podee ter um investimento acima de 100% ou abaixo de 0%, e a soma das 5 ações
+deve ser 100%.
+
+```{r pressure, echo=FALSE}
+
+```
+
+by: john de lara

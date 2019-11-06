@@ -5,7 +5,7 @@ date: "10 de outubro de 2019"
 output: rmdformats::readthedown
 #output: rmarkdown::html_vignette
 #vignette: >
-#  %\VignetteIndexEntry{Vignette Title}
+#  %\VignetteIndexEntry de{Vignette Title}
 #  %\VignetteEngine{knitr::rmarkdown}
 #  %\VignetteEncoding{UTF-8}
 ---
@@ -24,17 +24,19 @@ Para escolher as 5 ações e a porcentagem de aplicação em cada ação, o club
 O cálculo do retorno de cada mês é realizado como: Soma(RetornoAção_X * PorcentagemAção_X), onde X são as 10 possíveis ações escolhidas para investir. No quadro a seguir observa-se os cálculos, sendo a carteira escolhida: 30% na ação A; 25% na ação B; 20% na ação C; 15% na ação D e 10% na ação E.
 
 
-```{r tabelaBase, echo=FALSE}
+```{r codigoTratandoTabela, include=FALSE}
 library(kableExtra)
 library(dplyr)
-nomeDasColunas <- c("A","B","C","D","E", "Retorno Carteira")
-RetornoAnual <-  c(0.42292, 0.25685, 0.04128,  0.05812, 0.01731, 0.20979)
+source("tools.R", encoding = "UTF-8")
+#setwd("~/git/AlgoritmoDoVizinho")
 carteiraEscolhida <- c( 0.3, 0.25, 0.20, 0.15, 0.10, 1)
-tabela <- as.data.frame(rbind(RetornoAnual, carteiraEscolhida))
-colnames(tabela) <- nomeDasColunas
-kable(tabela, caption = "Tabela  Retorno De Investimento")
+
 ```
 
+```{r tabelaBase, echo=FALSE}
+tabela <- gerarMelhorTabela(carteiraEscolhida)
+kable(tabela, caption = "Tabela  Retorno De Investimento")
+```
 ## Exercício
 Utilize a heurística do vizinho para encontrar uma carteira de aplicação com o maior retorno anual.
 
@@ -53,42 +55,36 @@ apresentação: aula da primeira semana de novembro.
 
 ##### Por exemplo:
 ***Se a solução atual é aplicar nas ações A,B,C,D, E, com porcentagens de 30%, 25%, 20%, 15% e 10% as soluções vizinhas são:***
-
+t
 **2. Observação**: toda ação não pode ter um investimento acima de 100% ou abaixo de 0%, e a soma das 5 ações
 deve ser 100%.
 
 ```{r pressure, echo=FALSE}
-t = tabela
-qualRetornoDaCarteira <- function(t){
-  i = 1
-  while (i <=length(t)-1) {
-    if(i == 1){
-      multiplica <- t[1 ,i]*t[2 ,i]
-    }else{
-      multiplica1 <- t[1 ,i]*t[2 ,i]
-      multiplica <- rbind(multiplica, multiplica1)
-    }
+t = gerarMelhorTabela(carteiraEscolhida)
+flag = t
+parametro = 0.05
+i = 1
+j = 1
+while(j <= 5){
+  while(i <= 4){
+    t <- fazerPrimeiraLinha(t, i, j, parametro)
+    flag <- validarTabelaComRestricoes(flag, t)
+    sprintf("Grama do vizinho, linhas (%s) é mais verde!", i)
     i = i + 1
   }
-  return(sum(multiplica))
-}
-totalCarteiraEscolhida <- function(t){
   i = 1
-  while (i <= length(t)-1) {
-    if(i == 1){
-      soma <- t[2 ,i]
-    }else{
-      soma1 <- t[2 ,i]
-      soma <- rbind(soma, soma1)
-    }
-    i = i + 1
-  }
-  return(sum(soma))
+  j = j + 1
+  print(flag)
 }
-
-tabela$`Retorno Carteira`[1] <- qualRetornoDaCarteira(tabela)
-tabela$`Retorno Carteira`[2] <- totalCarteiraEscolhida(tabela)
+#0.2694365
 
 ```
 
-by: john de lara
+#### A melhor solução:
+```{r MelhorSolucao, echo=FALSE}
+# melhor solução:
+kable(flag, caption = "Tabela  Retorno De Investimento")
+```
+
+
+#### by: john de lara

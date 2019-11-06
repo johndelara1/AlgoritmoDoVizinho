@@ -1463,17 +1463,6 @@ $(document).ready(function () {
 <h1>Trabalho Inteligência Artificial</h1>
 <p>Heurística do Vizinho aplicado a Carteira de Investimentos</p>
 <p>Um clube de investimentos está avaliando a sua carteira de ações. O clube escolheu 10 possíveis ações para investir. A política do clube é investir em 5 das 10 ações, sendo o investimento nessas 5 ações de 30%, 25%, 20%, 15% e 10%. Para escolher as 5 ações e a porcentagem de aplicação em cada ação, o clube utiliza a soma dos retornos mensagens dos últimos 12 meses. O cálculo do retorno de cada mês é realizado como: Soma(RetornoAção_X * PorcentagemAção_X), onde X são as 10 possíveis ações escolhidas para investir. No quadro a seguir observa-se os cálculos, sendo a carteira escolhida: 30% na ação A; 25% na ação B; 20% na ação C; 15% na ação D e 10% na ação E.</p>
-<pre><code>## 
-## Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:kableExtra&#39;:
-## 
-##     group_rows</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union</code></pre>
 <table>
 <caption>
 Tabela Retorno De Investimento
@@ -1563,9 +1552,216 @@ carteiraEscolhida
 <p><strong>1. Observação</strong>: Considerar o vizinho de uma solução, o aumento na porcentagem de aplicação de uma ação em 5%. Desta forma, cada solução tem 25 vizinhos.</p>
 <div id="por-exemplo" class="section level5">
 <h5>Por exemplo:</h5>
-<p><strong><em>Se a solução atual é aplicar nas ações A,B,C,D, E, com porcentagens de 30%, 25%, 20%, 15% e 10% as soluções vizinhas são:</em></strong></p>
-<p><strong>2. Observação</strong>: toda ação não pode ter um investimento acima de 100% ou abaixo de 0%, e a soma das 5 ações deve ser 100%.</p>
-<p>by: john de lara</p>
+<p><strong><em>Se a solução atual é aplicar nas ações A,B,C,D, E, com porcentagens de 30%, 25%, 20%, 15% e 10% as soluções vizinhas são:</em></strong> t <strong>2. Observação</strong>: toda ação não pode ter um investimento acima de 100% ou abaixo de 0%, e a soma das 5 ações deve ser 100%.</p>
+<pre><code>## [1] &quot;rodando 1: 1&quot;
+## [1] &quot;rodando 1: 2&quot;
+## [1] &quot;rodando 1: 3&quot;
+## [1] &quot;rodando 1: 4&quot;
+## [1] &quot;rodando 1: 5&quot;
+## [1] &quot;rodando 1: 6&quot;
+## [1] &quot;rodando 1: 1&quot;
+## [1] &quot;rodando 1: 2&quot;
+## [1] &quot;rodando 1: 3&quot;
+## [1] &quot;rodando 1: 4&quot;
+## [1] &quot;rodando 1: 5&quot;
+## [1] &quot;rodando 1: 6&quot;
+## [1] &quot;rodando 1: 1&quot;
+## [1] &quot;rodando 1: 2&quot;
+## [1] &quot;rodando 1: 3&quot;
+## [1] &quot;rodando 1: 4&quot;
+## [1] &quot;rodando 1: 5&quot;
+## [1] &quot;rodando 1: 6&quot;
+##                         A       B       C       D       E Retorno Carteira
+## RetornoAnual      0.42292 0.25685 0.04128 0.05812 0.01731         0.230074
+## carteiraEscolhida 0.35000 0.25000 0.20000 0.15000 0.05000         1.000000
+## [1] &quot;rodando 2: 1&quot;
+## [1] &quot;rodando 2: 2&quot;
+## [1] &quot;rodando 2: 3&quot;
+## [1] &quot;rodando 2: 4&quot;
+## [1] &quot;rodando 2: 5&quot;
+## [1] &quot;rodando 2: 6&quot;
+## [1] &quot;rodando 2: 1&quot;
+## [1] &quot;rodando 2: 2&quot;
+## [1] &quot;rodando 2: 3&quot;
+## [1] &quot;rodando 2: 4&quot;
+## [1] &quot;rodando 2: 5&quot;
+## [1] &quot;rodando 2: 6&quot;
+## [1] &quot;rodando 2: 1&quot;
+## [1] &quot;rodando 2: 2&quot;
+## [1] &quot;rodando 2: 3&quot;
+## [1] &quot;rodando 2: 4&quot;
+## [1] &quot;rodando 2: 5&quot;
+## [1] &quot;rodando 2: 6&quot;
+##                         A       B       C       D       E Retorno Carteira
+## RetornoAnual      0.42292 0.25685 0.04128 0.05812 0.01731        0.2503545
+## carteiraEscolhida 0.40000 0.25000 0.20000 0.15000 0.00000        1.0000000
+## [1] &quot;rodando 3: 1&quot;
+## [1] &quot;rodando 3: 2&quot;
+## [1] &quot;rodando 3: 3&quot;
+## [1] &quot;rodando 3: 4&quot;
+## [1] &quot;rodando 3: 5&quot;
+## [1] &quot;rodando 3: 6&quot;
+## [1] &quot;rodando 3: 1&quot;
+## [1] &quot;rodando 3: 2&quot;
+## [1] &quot;rodando 3: 3&quot;
+## [1] &quot;rodando 3: 4&quot;
+## [1] &quot;rodando 3: 5&quot;
+## [1] &quot;rodando 3: 6&quot;
+## [1] &quot;rodando 3: 1&quot;
+## [1] &quot;rodando 3: 2&quot;
+## [1] &quot;rodando 3: 3&quot;
+## [1] &quot;rodando 3: 4&quot;
+## [1] &quot;Perigo&quot;
+## [1] &quot;rodando 3: 5&quot;
+## [1] &quot;rodando 3: 6&quot;
+##                         A       B       C       D       E Retorno Carteira
+## RetornoAnual      0.42292 0.25685 0.04128 0.05812 0.01731        0.2694365
+## carteiraEscolhida 0.45000 0.25000 0.15000 0.15000 0.00000        1.0000000
+## [1] &quot;rodando 4: 1&quot;
+## [1] &quot;rodando 4: 2&quot;
+## [1] &quot;rodando 4: 3&quot;
+## [1] &quot;rodando 4: 4&quot;
+## [1] &quot;Perigo&quot;
+## [1] &quot;rodando 4: 5&quot;
+## [1] &quot;rodando 4: 6&quot;
+## [1] &quot;rodando 4: 1&quot;
+## [1] &quot;rodando 4: 2&quot;
+## [1] &quot;rodando 4: 3&quot;
+## [1] &quot;rodando 4: 4&quot;
+## [1] &quot;Perigo&quot;
+## [1] &quot;rodando 4: 5&quot;
+## [1] &quot;rodando 4: 6&quot;
+## [1] &quot;rodando 4: 1&quot;
+## [1] &quot;rodando 4: 2&quot;
+## [1] &quot;rodando 4: 3&quot;
+## [1] &quot;rodando 4: 4&quot;
+## [1] &quot;Perigo&quot;
+## [1] &quot;rodando 4: 5&quot;
+## [1] &quot;rodando 4: 6&quot;
+## [1] &quot;rodando 4: 1&quot;
+## [1] &quot;rodando 4: 2&quot;
+## [1] &quot;rodando 4: 3&quot;
+## [1] &quot;rodando 4: 4&quot;
+## [1] &quot;Perigo&quot;
+## [1] &quot;rodando 4: 5&quot;
+## [1] &quot;rodando 4: 6&quot;
+##                         A       B       C       D       E Retorno Carteira
+## RetornoAnual      0.42292 0.25685 0.04128 0.05812 0.01731        0.2694365
+## carteiraEscolhida 0.45000 0.25000 0.15000 0.15000 0.00000        1.0000000
+## [1] &quot;rodando 5: 1&quot;
+## [1] &quot;rodando 5: 2&quot;
+## [1] &quot;rodando 5: 3&quot;
+## [1] &quot;rodando 5: 4&quot;
+## [1] &quot;Perigo&quot;
+## [1] &quot;rodando 5: 5&quot;
+## [1] &quot;rodando 5: 6&quot;
+## [1] &quot;rodando 5: 1&quot;
+## [1] &quot;rodando 5: 2&quot;
+## [1] &quot;rodando 5: 3&quot;
+## [1] &quot;rodando 5: 4&quot;
+## [1] &quot;Perigo&quot;
+## [1] &quot;rodando 5: 5&quot;
+## [1] &quot;rodando 5: 6&quot;
+## [1] &quot;rodando 5: 1&quot;
+## [1] &quot;rodando 5: 2&quot;
+## [1] &quot;rodando 5: 3&quot;
+## [1] &quot;rodando 5: 4&quot;
+## [1] &quot;Perigo&quot;
+## [1] &quot;rodando 5: 5&quot;
+## [1] &quot;rodando 5: 6&quot;
+## [1] &quot;rodando 5: 1&quot;
+## [1] &quot;rodando 5: 2&quot;
+## [1] &quot;rodando 5: 3&quot;
+## [1] &quot;rodando 5: 4&quot;
+## [1] &quot;Perigo&quot;
+## [1] &quot;rodando 5: 5&quot;
+## [1] &quot;rodando 5: 6&quot;
+##                         A       B       C       D       E Retorno Carteira
+## RetornoAnual      0.42292 0.25685 0.04128 0.05812 0.01731        0.2694365
+## carteiraEscolhida 0.45000 0.25000 0.15000 0.15000 0.00000        1.0000000</code></pre>
+</div>
+<div id="a-melhor-solução" class="section level4">
+<h4>A melhor solução:</h4>
+<table>
+<caption>
+Tabela Retorno De Investimento
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+A
+</th>
+<th style="text-align:right;">
+B
+</th>
+<th style="text-align:right;">
+C
+</th>
+<th style="text-align:right;">
+D
+</th>
+<th style="text-align:right;">
+E
+</th>
+<th style="text-align:right;">
+Retorno Carteira
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+RetornoAnual
+</td>
+<td style="text-align:right;">
+0.42292
+</td>
+<td style="text-align:right;">
+0.25685
+</td>
+<td style="text-align:right;">
+0.04128
+</td>
+<td style="text-align:right;">
+0.05812
+</td>
+<td style="text-align:right;">
+0.01731
+</td>
+<td style="text-align:right;">
+0.2694365
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+carteiraEscolhida
+</td>
+<td style="text-align:right;">
+0.45000
+</td>
+<td style="text-align:right;">
+0.25000
+</td>
+<td style="text-align:right;">
+0.15000
+</td>
+<td style="text-align:right;">
+0.15000
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+1.0000000
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="by-john-de-lara" class="section level4">
+<h4>by: john de lara</h4>
 </div>
 </div>
 </div>

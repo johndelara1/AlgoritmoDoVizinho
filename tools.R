@@ -1,3 +1,34 @@
+validacaoDosParametros <- function(){
+  i = 1
+  perigo = FALSE
+  while(i <=  6){
+    if(t[2,i] > 1 | t[2,i] < 0){
+      perigo = TRUE
+      print("Perigo")
+    }
+    print(sprintf("rodando %*s: %s",0,j,i))
+    i = i + 1
+  }
+  return(perigo)
+}
+
+validarTabelaComRestricoes <- function(flag, t){
+  flag1 = flag
+  if(flag[1,6] < t[1,6]){
+    if(!validacaoDosParametros()){
+      if(!travar_algoritmo()){
+        flag = t
+      }else{
+        
+      }
+    }
+  }
+  return(flag)
+}
+
+travar_algoritmo(flag, t)
+
+#### _______ Desenvolvendo pra cima _______####
 qualRetornoDaCarteira <- function(t){
   i = 1
   while (i <=length(t)-1) {
@@ -44,28 +75,6 @@ fazerPrimeiraLinha  <- function(t, i, j, p){
   return(t)
 }
 
-validacaoDosParametros <- function(){
-  i = 1
-  perigo = FALSE
-  while(i <=  6){
-    if(t[2,i] > 1 | t[2,i] < 0){
-      perigo = TRUE
-      print("Perigo")
-    }
-    print(sprintf("rodando %*s: %s",0,j,i))
-    i = i + 1
-  }
-  return(perigo)
-}
-
-validarTabelaComRestricoes <- function(flag, t){
-  if(flag[1,6] < t[1,6]){
-    if(!validacaoDosParametros()){
-      flag = t
-    }
-  }
-  return(flag)
-}
 
 gerarMelhorTabela <- function(carteiraEscolhida){
   nomeDasColunas <- c("A","B","C","D","E", "Retorno Carteira")

@@ -27,6 +27,7 @@ O cálculo do retorno de cada mês é realizado como: Soma(RetornoAção_X * Por
 ```{r codigoTratandoTabela, include=FALSE}
 library(kableExtra)
 library(dplyr)
+library(compare)
 source("tools.R", encoding = "UTF-8")
 #setwd("~/git/AlgoritmoDoVizinho")
 carteiraEscolhida <- c( 0.3, 0.25, 0.20, 0.15, 0.10, 1)
@@ -60,15 +61,16 @@ t
 deve ser 100%.
 
 ```{r pressure, echo=FALSE}
-t = gerarMelhorTabela(carteiraEscolhida)
-flag = t
+flag = gerarMelhorTabela(carteiraEscolhida)
 parametro = 0.05
 i = 1
 j = 1
 while(j <= 5){
   while(i <= 4){
+    flag1 = flag
     t <- fazerPrimeiraLinha(t, i, j, parametro)
     flag <- validarTabelaComRestricoes(flag, t)
+    comparativo <- compare(flag1,t,allowAll=TRUE)
     sprintf("Grama do vizinho, linhas (%s) é mais verde!", i)
     i = i + 1
   }
